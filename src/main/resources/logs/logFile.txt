@@ -7,4 +7,4 @@
 {"id":"event2","state":"FINISHED","timestamp":1617767528}
 {"id":"event3","state":"FINISHED","timestamp":1647767531}
 {"id":"event4","state":"FINISHED","type":"APPLICATION_LOG","host":"54321","timestamp":1617767544}
-{"id":"event5","state":"FINISHED","timestamp":1647767553}
+{"id":"event5","state":"FINISHED","timestamp":1647767555}
