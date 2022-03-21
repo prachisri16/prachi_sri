@@ -6,8 +6,12 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+
+import customevents.model.LogEvents;
 
 public class LogCustomEventsUtil {
 	
@@ -37,6 +41,23 @@ private static String path = null;
 		} catch (IOException e) {
 			return new ArrayList<>();
 		}
+	}
+	
+	public static Map<String, Long> getFinalEventsMap(List<LogEvents> logEventsList) {
+		Map<String, Long> finalMap = new LinkedHashMap<>();
+		
+		if (!logEventsList.isEmpty()) {
+			logEventsList.forEach(event -> {
+				if ("FINISHED".equalsIgnoreCase(event.getState()) && finalMap.containsKey(event.getId())) {
+					long duration = event.getTimestamp() - finalMap.get(event.getId());
+					finalMap.put(event.getId(), duration);
+				} else {
+					finalMap.put(event.getId(), event.getTimestamp());
+				}
+			});
+		}
+		
+		return finalMap;
 	}
 
 }

@@ -80,7 +80,7 @@ public class LogEvents {
 	/**
 	 * @return the timestamp
 	 */
-	public float getTimestamp() {
+	public long getTimestamp() {
 		return timestamp;
 	}
 
